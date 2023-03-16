@@ -1,0 +1,24 @@
+{
+  "name": "v-criptocheck",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "autoprefixer": "^10.4.13",
+    "vue": "^3.2.45"
+  },
+  "devDependencies": {
+    "@tailwindcss/forms": "^0.5.3",
+    "@vitejs/plugin-vue": "^4.0.0",
+    "tailwindcss": "^3.2.7",
+    "vite": "^4.1.0"
+  },
+  "browserslist": [
+    "cover 99.5%"
+  ]
+}
