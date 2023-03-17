@@ -115,7 +115,7 @@ export default {
         <div v-if="isAdded" class="text-sm text-red-600">Такой тикер уже добавлен</div>
       </div>
     </div>
-    <add-button @click="add" type="button" :disabled="tooManyTickersAdded" />
+    <add-button @click="add()" type="button" :disabled="tooManyTickersAdded" />
     <input type="button" />
   </section>
 </template>
