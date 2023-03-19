@@ -15,6 +15,9 @@ dist-ssr
 # Firebase cache
 .firebase/
 
+# Vitest coverage
+coverage
+
 # Editor directories and files
 .vscode/*
 !.vscode/extensions.json
