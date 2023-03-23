@@ -1,15 +1,27 @@
-import { describe, it, expect, test } from 'vitest'
+import { render } from '@testing-library/vue';
+import { expect, test } from 'vitest';
+import addButton from '../addButton.vue';
 
-import { render } from '@testing-library/vue'
-import addButton from '../addButton.vue'
+function renderAddButton(disabled){
+	return render(addButton, {
+    props: {
+      disabled: disabled,
+    },
+  });
+}
 
-// describe('addButton', () => {
-//   it('renders properly', () => {
-//     const wrapper = mount(addButton, { props: { msg: 'Hello Vitest' } })
-//     expect(wrapper.text()).toContain('Hello Vitest')
-//   })
-// })
-test('render add button', ()=> {
-	const {debug} = render(addButton)
-	debug()
-})
+test('addButton without disabled ', () => {
+  const { getByRole, debug } = renderAddButton(false)
+  const button = getByRole('button');
+	// console.log(button.options);
+	// console.log(button.attributes.disabled);
+	// debug()
+  expect(button.disabled).toBeFalsy();
+});
+
+test('addButton with disabled', () => {
+  const { getByRole } = renderAddButton(true)
+  const button = getByRole('button');
+
+  expect(button.disabled).toBeTruthy();
+});

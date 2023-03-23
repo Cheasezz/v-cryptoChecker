@@ -116,6 +116,5 @@ export default {
       </div>
     </div>
     <add-button @click="add()" type="button" :disabled="tooManyTickersAdded" />
-    <input type="button" />
   </section>
 </template>

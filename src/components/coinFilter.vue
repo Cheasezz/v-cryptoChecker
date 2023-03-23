@@ -83,16 +83,16 @@ export default {
       @click="page = page - 1"
       class="my-4 inline-flex items-center py-2 px-4 border border-transparent shadow-sm text-sm leading-4 font-medium rounded-full text-white bg-gray-600 hover:bg-gray-700 transition-colors duration-300 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-500"
     >
-      Back
+      Назад
     </button>
     <button
       v-if="hasNextPage"
       @click="page = +page + 1"
       class="my-4 inline-flex items-center py-2 px-4 border border-transparent shadow-sm text-sm leading-4 font-medium rounded-full text-white bg-gray-600 hover:bg-gray-700 transition-colors duration-300 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-500"
     >
-      Next
+      Вперед
     </button>
-    Filter:
+    Фильтр:
     <input
       v-model="filter"
       class="block pl-1 border border-gray-300 text-gray-900 focus:outline-none focus:ring-gray-600 focus:border-gray-600 sm:text-sm rounded-md"
