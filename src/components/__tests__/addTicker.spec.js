@@ -1,25 +1,11 @@
-// import { describe, it, expect, test } from 'vitest'
-
-import { render } from '@testing-library/vue';
+import { describe, expect, it, vi } from 'vitest';
+import { render, screen, waitFor } from '@testing-library/vue';
 import addTicker from '../addTicker.vue';
-// import addButton from '../addButton.vue';
 
-// describe('addButton', () => {
-//   it('renders properly', () => {
-//     const wrapper = mount(addButton, { props: { msg: 'Hello Vitest' } })
-//     expect(wrapper.text()).toContain('Hello Vitest')
-//   })
-// })
-test('render addTicker component', () => {
-  const { debug } = render(addTicker, {
-    props: {
-      tickers: [],
-    },
-		shallow: true,
-  });
-  debug();
-});
-// test('render addButton component', () => {
-//   const { debug } = render(addButton);
-//   debug();
-// });
+it.todo('when a value is entered, hints appear')
+it.todo('if the entered value does not match any coin from coin list, then hints do not appear')
+it.todo('when when the value is entered and the addButton is clicked, a custom event is triggered')
+it.todo('a warning appears due to a repeating ticker')
+it.todo('after changing the input value, warnings are removed')
+it.todo('')
+it.todo('')

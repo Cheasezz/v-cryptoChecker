@@ -1,27 +1,26 @@
-import { render } from '@testing-library/vue';
-import { expect, test } from 'vitest';
+import { describe, expect, it } from 'vitest';
+import { render, screen } from '@testing-library/vue';
 import addButton from '../addButton.vue';
 
-function renderAddButton(disabled){
-	return render(addButton, {
+function renderAddButton(isDisabled) {
+  return render(addButton, {
     props: {
-      disabled: disabled,
+      disabled: isDisabled,
     },
   });
 }
 
-test('addButton without disabled ', () => {
-  const { getByRole, debug } = renderAddButton(false)
-  const button = getByRole('button');
-	// console.log(button.options);
-	// console.log(button.attributes.disabled);
-	// debug()
-  expect(button.disabled).toBeFalsy();
-});
+describe('different disabled attribute', () => {
+  it('without disabled', () => {
+    renderAddButton(false);
+    
+    expect(screen.getByRole('button')).toBeEnabled();
+  });
 
-test('addButton with disabled', () => {
-  const { getByRole } = renderAddButton(true)
-  const button = getByRole('button');
+  it('with disabled', () => {
+    renderAddButton(true);
 
-  expect(button.disabled).toBeTruthy();
+    expect(screen.getByRole('button')).toBeDisabled();
+  });
+	
 });

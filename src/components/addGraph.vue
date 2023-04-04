@@ -77,7 +77,7 @@ export default {
         class="bg-purple-800 border w-10"
       ></div>
     </div>
-    <close-button @click="$emit('unselect-tik',null)"/>
+    <close-button @click="$emit('unselect-tik',null)" class="top-0 right-0"/>
   </section>
 </template>
 

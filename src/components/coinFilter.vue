@@ -1,14 +1,13 @@
 <script>
 export default {
-	props: {
-		tickers: {
-			type: Array
-		},
-
-	},
-	emits: {
-		'current-coin-list':(value)=> Array.isArray(value),
-	},
+  props: {
+    tickers: {
+      type: Array,
+    },
+  },
+  emits: {
+    'current-coin-list': (value) => Array.isArray(value),
+  },
   data() {
     return {
       page: 1,
@@ -27,8 +26,8 @@ export default {
       return this.tickers.filter((ticker) => ticker.name.includes(this.filter.toUpperCase()));
     },
     paginatedTickers() {
-			const currentCoins =this.filteredTickersList.slice(this.startIndex, this.endIndex)
-			this.$emit('current-coin-list', currentCoins)
+      const currentCoins = this.filteredTickersList.slice(this.startIndex, this.endIndex);
+      this.$emit('current-coin-list', currentCoins);
       return currentCoins;
     },
     hasNextPage() {
@@ -41,20 +40,17 @@ export default {
       };
     },
   },
-	mounted() {
-		const windowData = Object.fromEntries(new URL(window.location).searchParams.entries());
+  mounted() {
+    const windowData = Object.fromEntries(new URL(window.location).searchParams.entries());
     const VALID_KEYS = ['filter', 'page'];
     VALID_KEYS.forEach((key) => {
       if (windowData[key]) {
         this[key] = windowData[key];
       }
     });
-
-	},
-	updated(){
-	},
-	watch: {
-		filter() {
+  },
+  watch: {
+    filter() {
       this.page = 1;
     },
     pageStateOptions(value) {
@@ -69,10 +65,10 @@ export default {
         this.page -= 1;
       }
     },
-		tickers(newValue,oldValue){
-			if(newValue.length>oldValue.length) this.filter=''
-		}
-	}
+    tickers(newValue, oldValue) {
+      if (newValue.length > oldValue.length) this.filter = '';
+    },
+  },
 };
 </script>
 
@@ -97,8 +93,7 @@ export default {
       v-model="filter"
       class="block pl-1 border border-gray-300 text-gray-900 focus:outline-none focus:ring-gray-600 focus:border-gray-600 sm:text-sm rounded-md"
     />
-		<hr class="w-full border-t border-gray-600 my-4" />
-
+    <hr class="w-full border-t border-gray-600 my-4" />
   </div>
 </template>
 

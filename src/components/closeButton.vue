@@ -1,12 +1,12 @@
 <template>
-  <button type="button" class="absolute top-0 right-0">
+  <button type="button" class="absolute ">
     <svg
       xmlns="http://www.w3.org/2000/svg"
       xmlns:xlink="http://www.w3.org/1999/xlink"
       xmlns:svgjs="http://svgjs.com/svgjs"
       version="1.1"
-      width="30"
-      height="30"
+      width="25"
+      height="25"
       x="0"
       y="0"
       viewBox="0 0 511.76 511.76"

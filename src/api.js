@@ -10,6 +10,7 @@ socket.addEventListener('message', (e) => {
     return;
   }
   const handlers = tickersHandlers.get(currency) ?? [];
+	// console.log(handlers);
   handlers.forEach((fn) => fn(newPrice));
 });
 
@@ -38,8 +39,7 @@ function unsubscribeFromTickerOnWs(ticker) {
 }
 
 export const subscribeToTicker = (ticker, cb) => {
-  const subscribers = tickersHandlers.get(ticker) || [];
-  tickersHandlers.set(ticker, [...subscribers, cb]);
+  tickersHandlers.set(ticker, [cb]);
   subscribeToTickerOnWs(ticker);
 };
 export const unsubscribeFromTicker = (ticker) => {
@@ -50,14 +50,15 @@ export const unsubscribeFromTicker = (ticker) => {
 export async function getCoinList() {
   try {
     const fetchCoinList = await fetch(
-      `https://min-api.cryptocompare.com/data/blockchain/list?&api_key=${API_KEY}`
+      `https://min-api.cryptocompare.com/data/blockchain/list?api_key=${API_KEY}`
     );
-		// debugger
-		const coinList =await fetchCoinList.json();
-    return coinList
+    const coinList = await fetchCoinList.json();
 
+    if (coinList.Response == 'Error') throw new Error(coinList.Message);
+
+		const coinListArr = Object.keys(coinList.Data)
+    return coinListArr;
   } catch (error) {
-    console.log(error);
+    throw error;
   }
 }
-

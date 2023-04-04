@@ -1,45 +1,19 @@
 <script>
-import { getCoinList } from '../api';
 export default {
-  emits: {
-    'is-load-coin-list': (obj) =>typeof obj === 'object',
-  },
-  data() {
-    return {
-      isLoading: true,
-      coinList: {},
-    };
-  },
-	methods: {
-    async requestCoinList() {
-      try {
-
-        this.coinList = await getCoinList();
-
-        this.isLoading = false;
-
-        this.$emit('is-load-coin-list',  this.coinList);
-      } catch (error) {
-        console.log(error);
-      }
-    },
-	},
-  mounted() {
-		this.requestCoinList()
-    // this.isLoadedList = false;
-		// console.log(getCoinList());
-    // this.coinList = getCoinList();
-    // this.isLoadedList = true;
-    // this.$emit('is-load-coin-list', this.isLoadedList);
-  },
+  // props: {
+  //   isLoading: {
+  //     type: Boolean,
+  //   },
+  // },
 };
 </script>
 
 <template>
   <div
-	v-if="isLoading"
+    
     class="fixed w-100 h-100 opacity-80 bg-purple-800 inset-0 z-50 flex items-center justify-center"
-  	>
+		data-testid="loadingScreen"
+  >
     <svg
       class="animate-spin -ml-1 mr-3 h-12 w-12 text-white"
       xmlns="http://www.w3.org/2000/svg"

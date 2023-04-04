@@ -21,12 +21,12 @@ export default {
       tickers: [],
       sel: null,
       currentCoins: [],
-      coinsListFrHints: {},
+      isLoading: true,
     };
   },
   methods: {
-    loadingScreenEventHandler(obj) {
-      this.coinsListFrHints = obj;
+    loadingScreenEventHandler(bool) {
+      this.isLoading = bool;
     },
     uppdateTickersArr(newTickersArr) {
       this.tickers = newTickersArr;
@@ -40,12 +40,12 @@ export default {
 
 <template>
   <div class="mx-auto flex flex-col items-center bg-gray-50 p-4">
-    <load-screen @is-load-coin-list="loadingScreenEventHandler" />
+    <load-screen v-if="isLoading"  />
 
     <div class="container">
       <add-ticker
         @give-tickers-arr="uppdateTickersArr"
-        :coinList="coinsListFrHints"
+        @loading-coin-list-finished="loadingScreenEventHandler"
         :tickers="tickers"
       />
 
